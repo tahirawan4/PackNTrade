@@ -1,0 +1,153 @@
+.navbar-toggleable-md
+{
+    height: 40px;
+}
+#navbarCollapse
+{
+    padding-top: 20px;
+}
+.navbar-nav
+{
+    padding-left: 100px;
+}
+#navbarCollapse .mr-auto
+{
+    margin-left: 183px;
+}
+.navbar-toggleable-md .mr-auto
+{
+   padding-right: 180px;
+}
+.nav-link
+{
+   color: white !important;
+
+}
+.contact-info
+{
+    padding-top: 20px !important;
+}
+.main-menu ul li
+{
+    float:left !important;
+
+}
+.main-menu ul li a
+{
+    font-size: 16px;
+    font-weight: bold;
+    padding: 16px 30px 18px;
+    color:white !important;
+    text-decoration: none;
+
+}
+.main-menu ul li a:hover
+{
+    background-color:orange !important;
+
+}
+
+.menu-row
+{
+    /*border: 2px solid;*/
+    padding-top: 13px;
+}
+.main-menu
+{
+/*margin-top: 40px;*/
+background-color: black;
+}
+.menu-list
+{
+    list-style: none !important;
+}
+.cart
+{
+padding-top: 18px;
+}
+.footer
+{
+height: 50px;
+background-color: black;
+}
+.fotter-content
+{
+    padding-top: 10px;
+}
+.headings
+{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.heading1
+{
+    padding-bottom:10px;
+
+
+}
+.heading2
+{
+
+
+}
+.t-img
+{
+    float: left;
+    padding-right: 20px;
+}
+.t-heading
+{
+    padding-bottom: 20px;
+}
+.testimonial
+{
+    margin-left: -16px;
+}
+.uper-footer
+{
+    border-top: 1px solid;
+    padding: 15px;
+}
+.col2
+{
+    padding-top: 12px;
+}
+.page-heading
+{
+   text-align: center;
+}
+.para1
+{
+padding-bottom: 40px;
+}
+.map
+{
+text-align: center;
+}
+.login-form p
+{
+    font-weight:bold;
+}
+.login-form p input
+{
+     width: 500px;
+    height: 40px;
+}
+.logo-container
+{
+    margin-top: -24px;
+    background-color: #C3B68C;
+}
+}
+.login-register-form
+{
+    margin: auto !important;
+}
+.col-sm-offset-3 form label
+{
+display: block;
+}
+.helptext
+{
+display:none;
+}

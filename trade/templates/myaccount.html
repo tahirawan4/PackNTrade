@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 headings">
+            <div class="page-heading"><h3>My Account</h3></div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 login-form">
+            <h4>Login</h4>
+            <form action="/team_name_url/" method="post">
+                <p class="username">
+                    <label for="username">Username or email address <span class="required">*</span></label><br>
+                    <input type="text" class="" name="username" id="username" value="">
+                </p>
+                <p class="password">
+                    <label for="password">Password <span class="required">*</span></label><br>
+                    <input class="input-text" type="password" name="password" id="password"><br>
+                </p>
+                <p class="submit-btn">
+                    <input type="submit" class="button" name="login" value="Login">
+                </p>
+                <p class="lost_password">
+				<a href="#">Lost your password?</a>
+			    </p>
+            </form>
+        </div>
+        <div class="col-md-6 login-form">
+
+             <h4>Register</h4>
+            <form action="/#/" method="post">
+                <p class="email">
+                    <label for="email">Email Address <span class="required">*</span></label><br>
+                    <input type="text" class="" name="username" id="email" value="">
+                </p>
+                <p class="password">
+                    <label for="password">Password <span class="required">*</span></label><br>
+                    <input class="input-text" type="password" name="password"><br>
+                </p>
+                <p class="submit-btn">
+                    <input type="submit" class="button" name="login" value="Register">
+                </p>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

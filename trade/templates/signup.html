@@ -1,0 +1,22 @@
+<!-- templates/signup.html -->
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+<!--{% block content %}-->
+<!--<h2>Sign up</h2>-->
+  <!--<form action="/your-name/" method="post">-->
+    <!--{% csrf_token %}-->
+    <!--{{ form.as_p }}-->
+    <!--<button type="submit">Sign up</button>-->
+  <!--</form>-->
+
+  <h2>Sign up</h2>
+  <form action="{% url 'signup' %}" method="post">
+    {% csrf_token %}
+    <p><label for="name">Name:</label><input type="text" name="name" value="name"/></p>
+    <p><label for="Password">Password:</label><input type="text" name="password" value="password"/></p>
+    <input type="submit" value="Submit"/>
+  </form>
+
+{% endblock %}
