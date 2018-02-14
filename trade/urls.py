@@ -1,7 +1,9 @@
-from django.contrib import admin
 from django.urls import path
-from trade.views import home
+from django.conf.urls.static import static
+
+from PackageNTrade import settings
+from trade.views import home, IndexView
 
 urlpatterns = [
-    path('home/', home, name='index'),
-]
+    path('home/', IndexView.as_view()),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
