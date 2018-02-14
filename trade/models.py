@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.db import models
 
@@ -92,15 +94,14 @@ class User(AbstractBaseUser):
         return str(self.id)
 
 
-def upload_product_image(instance):
-    product = Product.objects.get(id=instance.id)
-    return '{}/{}/{}'.format("Product", product.id, 'product_image.jpg')
+def upload_product_image(instance, filename):
+    now_time = datetime.now().microsecond
+    return '{}/{}'.format("Products", '%s.jpg' % now_time)
 
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=150)
-
     # other = models.
 
     class Meta:
@@ -117,7 +118,7 @@ class Product(models.Model):
     dimensions = models.CharField(max_length=50)
     price = models.FloatField(default=0.0)
     manufacturer = models.CharField(max_length=50)
-    image = models.ImageField(upload_to=upload_product_image)
+    image = models.ImageField(upload_to=upload_product_image, null=True, blank=True)
     quantity = models.IntegerField(default=0)
     category = models.ManyToManyField(Category)
 

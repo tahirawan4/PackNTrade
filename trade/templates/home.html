@@ -1,5 +1,13 @@
 {% load static %}
 {% extends 'base.html' %}
 {% block content %}
+<table>
+<tr><th>Product Title</th><th>Price</th>
+{% for p in product %}
+    {% if p %}
+    <tr><td>{{ p.title }}</td><td>{{ p.price }}</td></tr>
 
+    {% endif %}
+{% endfor %}
+</table>
 {% endblock content %}
