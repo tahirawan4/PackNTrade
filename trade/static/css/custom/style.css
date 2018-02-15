@@ -50,7 +50,7 @@
 .menu-row
 {
     /*border: 2px solid;*/
-    padding-top: 13px;
+
 }
 .main-menu
 {
@@ -60,6 +60,17 @@ background-color: black;
 .menu-list
 {
     list-style: none !important;
+    display: inline-flex;
+        margin-top: 27px;
+}
+.menu-list li
+{
+    padding-right: 20px;
+}
+.menu-list li a
+{
+    color: black;
+    font-weight: bold;
 }
 .cart
 {
@@ -150,4 +161,46 @@ display: block;
 .helptext
 {
 display:none;
+}
+.search-bar
+{
+background-color: #ffb400;
+    width: 100% !important;
+}
+.product-menu
+{
+    margin-top: 12px !important;
+        list-style: none !important;
+}
+.product-menu li a
+{
+    background-color: black;
+    padding-top: 14px;
+    padding-left: 10px;
+    padding-bottom: 18px;
+    padding-right: 10px;
+    /* padding: 13px; */
+    color: white;
+    font-weight: bold;
+    margin-left: 58px;
+}
+.search-container
+{
+    padding-top: 4px !important;
+    padding-bottom: 4px;
+
+}
+.search-box-btn
+{
+width:700px !important;
+height:44px;
+}
+.submit
+{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.top-menu
+{
+    padding-bottom: 20px;
 }

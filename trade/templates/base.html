@@ -9,7 +9,7 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>Top navbar example for Bootstrap</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/custom/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom/style.css' %}">
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
@@ -20,12 +20,48 @@
 <body>
 
     <div class="container">
-          <div class="row">
-              <div class="col-sm-4" style="">logo</div>
-              <div class="col-sm-4" style="">menu</div>
-              <div class="col-sm-4" style="">cart</div>
+          <div class="row top-menu">
+              <div class="col-lg-4" style="">
+                  <img src="{% static 'images/logo.jpg' %}">
+              </div>
+              <div class="col-lg-4" style="">
+                  <div class="menu-row">
+                    <ul class="menu-list">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                  </div>
+              </div>
+              <div class="col-lg-4" style="">
+                  <ul class="menu-list">
+                    <li><a href="#">Wish List</a></li>
+                    <li><a href="#">Compare</a></li>
+                  </ul>
+              </div>
           </div>
     </div>
+    <div class="container search-bar">
+        <div class="row">
+            <div class="col-md-4" style="text-align:  center;">
+                    <ul class="product-menu">
+                        <li><a href="#">CATEGORY MENU</a></li>
+                    </ul>
+            </div>
+            <div class="col-md-8">
+                  <div class="search-container">
+                        <form action="/action_page.php">
+                            <input class="search-box-btn" type="text" placeholder="Search.." name="search">
+                            <button class="submit" type="submit">Submit</button>
+                        </form>
+                    </div>
+            </div>
+        </div>
+
+    </div>
+
+
 
 {% block content %}{% endblock content %}
 
