@@ -8,8 +8,7 @@
     <style>
         td { text-align :center}
     </style>
-    <script src="{% static 'js/jquery-3.1.1.slim.min.js' %}"></script>
-    <script>
+    <script src="{% static 'js/jquery-3.1.1.slim.min.js' %}"></script><script>
         var cart = [];
         $(function () {
             if (localStorage.cart)
@@ -20,9 +19,10 @@
         });
 
         function addToCart() {
-            var price = $("#products").val();
-            var name = $("#products option:selected").text();
-            var qty = $("#qty").val();
+            var price = $("#product_price").text();
+            var name = $("#product_title").text();
+            <!--var qty = $("#qty").val();-->
+            var qty = 1;
 
             // update qty if product is already present
             for (var i in cart) {
@@ -72,26 +72,44 @@
             }
         }
     </script>
-</head>
 <body>
     <h2>Cart</h2>
-    Select Product :
-    <select id="products">
-        {% for p in products %}
-        {% if p %}
-        <option  value="{{ p.price }}">{{ p.slug }}</option>
-        {% endif %}
-        {% endfor %}
+    <!--Select Product :-->
+    <!--<select id="products">-->
+        <!--{% for p in products %}-->
+        <!--{% if p %}-->
+        <!--<option  value="{{ p.price }}">{{ p.slug }}</option>-->
+
+        <!--{% endif %}-->
+        <!--{% endfor %}-->
 
         <!--<option value="50000">iPhone6</option>-->
         <!--<option value="60000">iPhone6 Plus</option>-->
         <!--<option value="45000">iPad Air 2 with Cellular</option>-->
-    </select>
-
-    Quantity
-    <input type="text" id="qty" size="3" />
-    <p/>
+    <!--</select>-->
+<h2>Products</h2>
+<img src="{{ product.image.url }}">
+        <!--Quantity-->
+    <!--<input type="text" id="qty" size="3" />-->
     <button id="btnAdd" onclick="addToCart()" >Add To Cart</button>
+
+    <h3>Title: </h3><span id="product_title">{{ product.title }}</span>
+<h3>Description: </h3>{{ product.description }}
+<h3>Size: </h3> {{ product.size }}
+    <h3>Price: </h3> <span id="product_price">{{ product.price }}</span>
+<h3>Stock: </h3>{{ product.stock }}
+<h3>Category: </h3>{{ product.category.get.name }}
+
+
+<h2>Category</h2>
+<h3>Name: </h3>{{ category.name }}
+<h3>Description: </h3>{{ category.description }}
+<h3>Products: </h3>{{ product_category.get }}
+
+    <!--Quantity-->
+    <!--<input type="text" id="qty" size="3" />-->
+    <!--<p/>-->
+    <!--<button id="btnAdd" onclick="addToCart()" >Add To Cart</button>-->
 
     <p></p>
     <table id="cart" border="1" style="visibility:hidden; width:100%">

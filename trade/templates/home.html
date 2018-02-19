@@ -2,12 +2,36 @@
 
 {% block content %}
 <table>
-<tr><th>Product Title</th><th>Price</th>
-{% for p in product %}
+    <tr>
+        <th>Products</th>
+    </tr>
+    {% for p in products %}
     {% if p %}
-    <tr><td>{{ p.title }}</td><td>{{ p.price }}</td></tr>
+    <tr>
+        <td><a href="{% url 'details'  p.slug %}">{{ p.slug }}</a></td>
+    </tr>
 
     {% endif %}
-{% endfor %}
+    {% endfor %}
+</table>
+
+<h5>Sepration</h5>
+
+<table>
+    <tr>
+        <th><h4>Categories</h4></th>
+    </tr>
+    {% for c in category %}
+    {% if c %}
+    <tr>
+        <td><a href="{% url 'category'  c.id %}">{{ c.name }}</a></td>
+        {% for pc in c.product_set.all %}
+        {% if pc %}
+    <tr><td><h5>Category Products</h5></td></tr>
+    <tr><td>{{ pc.title }}</td></tr>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% endfor %}
 </table>
 {% endblock content %}

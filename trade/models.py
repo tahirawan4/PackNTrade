@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.db import models
 
@@ -36,13 +35,6 @@ class User(AbstractBaseUser):
     name = models.CharField(max_length=150, null=True, blank=True)
     address = models.CharField(max_length=150, null=True, blank=True)
     phone_number = models.CharField(max_length=150, null=True, blank=True)
-    # image = models.ImageField(upload_to=upload_profile_image, blank=True, null=True)
-    # last_name = models.CharField(max_length=150, null=True, blank=True)
-    # nick_name = models.CharField(max_length=150, null=True, blank=True)
-    # username = models.CharField(max_length=50)
-    # account_id = models.CharField(max_length=10, null=True, blank=True)
-    # temporary_profile = models.BooleanField(default=True)
-    # ref_user = models.ManyToManyField('self', null=True)
 
     is_staff = models.BooleanField(
         ('staff status'),
@@ -102,7 +94,6 @@ def upload_product_image(instance, filename):
 class Category(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=150)
-    # other = models.
 
     class Meta:
         verbose_name_plural = "categories"
@@ -113,14 +104,36 @@ class Category(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=150)
+    slug = models.SlugField(max_length=150)
     description = models.CharField(max_length=200)
     size = models.CharField(max_length=50)
     dimensions = models.CharField(max_length=50)
     price = models.FloatField(default=0.0)
     manufacturer = models.CharField(max_length=50)
     image = models.ImageField(upload_to=upload_product_image, null=True, blank=True)
-    quantity = models.IntegerField(default=0)
+    stock = models.IntegerField(default=0)
     category = models.ManyToManyField(Category)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.id)
+
+
+class ProductImage(models.Model):
+    image = models.ImageField(upload_to=upload_product_image, null=True, blank=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.id)
+
+
+class ProductPurchased(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    unit_price = models.FloatField(default=0.0)
+    quantity = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name_plural = "ProductPurchased"
 
     def __str__(self):
         return str(self.id)
@@ -148,7 +161,7 @@ class Order(models.Model):
     )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ManyToManyField(Product)
+    purchased_product = models.ManyToManyField(ProductPurchased)
     promocode = models.ForeignKey(PromoCode, null=True, blank=True, on_delete=models.CASCADE)
     status = models.CharField(max_length=50, choices=STATUS_TYPE, default=INPROGRESS)
     address = models.CharField(max_length=200)
@@ -162,10 +175,7 @@ class Order(models.Model):
 class OrderDetail(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    # discount = models.FloatField(default=0.0)
     quantity = models.IntegerField(default=0)
-
-    # unit_price = models.FloatField(default=0.0)
 
     def __str__(self):
         return str(self.id)
@@ -183,24 +193,11 @@ class Payment(models.Model):
     amount = models.FloatField(default=0.0)
     date = models.DateTimeField()
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    # payment_type = models.CharField(max_length=100)
     payment_type = models.CharField(max_length=100, choices=PAYMENT_TYPE, default=CARD)
 
     def __str__(self):
         return str(self.id)
 
-
-class ProductPurchased(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    # product = models.ManyToManyField(Product)
-    unit_price = models.FloatField(default=0.0)
-    quantity = models.IntegerField(default=0)
-
-    class Meta:
-        verbose_name_plural = "ProductPurchased"
-
-    def __str__(self):
-        return str(self.id)
 
 
 class WishList(models.Model):
